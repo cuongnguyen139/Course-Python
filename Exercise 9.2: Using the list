@@ -1,0 +1,34 @@
+
+def selection():
+    try:
+        selection=int(input("Would you like to \n(1)Add or \n(2)Remove items or\n(3)Quit?:"))
+        return selection
+    except Exception:
+        return "wrong"
+        
+def secondaction(selection, memo):
+    if selection == 1:
+        memo.append(input("What will be added?: "))
+    elif selection == 2:
+        print("There are", len(memo),"items in the list.")
+        target=int(input("Which item is deleted?: "))
+        try:
+            memo.pop(target)
+        except Exception:
+            print("Incorrect selection.")
+    elif selection == 3:
+        print("The following items remain in the list:")
+        for i in memo:
+            print(i)
+        return "end"
+    else:
+        print("Incorrect selection.")
+
+def main():
+    memo = []
+    while True:
+        if secondaction(selection(), memo) == "end":
+            break
+
+if __name__== "__main__":
+    main()
